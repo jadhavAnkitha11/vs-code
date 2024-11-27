@@ -1,0 +1,31 @@
+<template>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal header -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Opportunity Form</h2>
+                </header>
+                <!-- Modal body -->
+                <form onsubmit={handlesave}>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning-input name="opportunityName" label="Opportunity Name" value={opportunityName} type="text" onchange={handlechange} required></lightning-input>
+                        <lightning-input name="description" label="Description" type="text" value={description} onchange={handlechange}></lightning-input>
+                        <lightning-input name="amount" type="currency" label="Amount" value={amount} onchange={handlechange}></lightning-input>
+                        <lightning-input name="closedate" type="date" label="Close Date" value={closedate} onchange={handlechange}></lightning-input>
+                        <lightning-input name="stagename" type="text" label="Stage Name" value={stagename} onchange={handlechange}></lightning-input>
+                    </div>
+     
+                    <!-- Modal footer -->
+                    <footer class="slds-modal__footer">
+                        <lightning-button variant="brand" label="Save" title="Save" type="submit" onclick={handlesave} class="slds-m-right_x-small"></lightning-button>
+                        <lightning-button variant="brand" label="Cancel" title="Cancel" type="button" onclick={handlecancel} class="slds-m-right_x-small"></lightning-button>
+                    </footer>
+                </form>
+            </div>
+        </section>
+         <div class="slds-backdrop slds-backdrop_open"></div> 
+</template>

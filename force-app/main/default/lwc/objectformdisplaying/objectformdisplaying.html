@@ -1,0 +1,38 @@
+ <!-- <template>
+    <lightning-combobox
+    name="combobox"
+    label="Select Object"
+    placeholder="Choose Object"
+    value={selectedValue}
+    options={options}
+    onchange={handleChange}
+    class="slds-p-around_small slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-3">
+</lightning-combobox>
+ 
+    <template if:true={isAccount}>
+        <c-account-form></c-account-form>
+    </template>
+</template> -->
+
+<template>
+    <lightning-combobox
+        name="combobox"
+        label="Select Object"
+        placeholder="Choose Object"
+        value={selectedValue}
+        options={options}
+        onchange={handleChange}
+        class="slds-p-around_small slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-3">
+    </lightning-combobox>
+ 
+    <!-- Conditionally display the appropriate form component based on selectedValue -->
+    <template if:true={isAccount}>
+        <c-account-form></c-account-form>
+    </template>
+     <template if:true={isContact}>
+        <c-contactform></c-contactform>
+    </template>
+     <template if:true={isOpportunity}>
+        <c-opportunity-form></c-opportunity-form>
+     </template>  
+</template>

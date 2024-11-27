@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../.husky"
+		},
+		{
+			"path": "../.sf"
+		},
+		{
+			"path": "../.sfdx"
+		},
+		{
+			"path": "../.vscode"
+		},
+		{
+			"path": "../config"
+		},
+		{
+			"path": "../force-app"
+		},
+		{
+			"path": "../manifest"
+		}
+	]
+}

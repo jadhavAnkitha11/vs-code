@@ -1,0 +1,19 @@
+/* .white-icon lightning-icon {
+    /* color: white !important; */
+    /* --slds-c-button-color-background : blue;
+/* } */ 
+
+/* .blue-background-icon{
+    --sds-c-icon-color-background: blue;
+        padding: 0.3rem;
+} */
+
+.blue-utility-icon {
+    --sds-c-icon-color-foreground-default: blue;
+}
+.center-button {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
+}

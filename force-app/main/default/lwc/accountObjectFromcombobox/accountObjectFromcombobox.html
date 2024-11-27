@@ -1,0 +1,21 @@
+<!-- <template>
+    <form>
+        <lightning-input name="Account Name" label=" Account Name"  type="Text" onchange={handlechange} required></lightning-input>
+        <lightning-input name="Phone" label="Phone" type="Number" onchange={handlechange}></lightning-input>
+        <lightning-input name="Annual Revenue" label="Annual Revenue" onchange={handlechange}></lightning-input>
+        <lightning-button variant="brand" label="save" title="save" onclick={handlesave} class="slds-m-right_x-small"></lightning-button>
+        <lightning-button variant="brand" label="cancel" title="cancel" onclick={handlecancel} class="slds-m-right_x-small"></lightning-button>
+    </form>
+</template> -->
+<template>
+    <c-object-combobox onselected={handleParent}></c-object-combobox>
+    <template if:true={isAccount}>
+        <c-account-form></c-account-form>
+    </template>
+    <template if:true={isContact}>
+        <c-contact-form></c-contact-form>
+    </template>
+    <template if:true={isOpportunity}>
+        <c-opportunity-form></c-opportunity-form>
+    </template>
+</template>

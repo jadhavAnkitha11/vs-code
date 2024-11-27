@@ -1,0 +1,115 @@
+<template>
+    <lightning-card>
+    <div>
+        &nbsp;
+        <span>
+        <lightning-icon icon-name='standard:opportunity' alternative-text='opportunity' size='small' title='opportunity'></lightning-icon>
+        </span>
+<span>
+     &nbsp; Opportunity Records
+</span>
+    </div>
+    <template lwc:if={oppdata}>
+        
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+           
+            <thead>
+                <tr>
+
+                    <th>
+                        
+                        <lightning-input
+                            type="checkbox"
+                            data-id="select-all-checkbox" 
+                            onchange={handleSelectAll}>
+                        </lightning-input>
+                    </th>
+                    <th>Opportunity Name</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>CloseDate</th>
+                    <th>Stage Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={oppdata} for:item="opportunity">
+                    <tr key={opportunity.Id}>
+                        <td>
+                           
+                            <lightning-input
+                                type="checkbox"
+                                data-id={opportunity.Id}
+                                onchange={handleRowSelection}
+                                checked={opportunity.selected}>
+                                
+                            </lightning-input>
+                        </td>
+                        <td>{opportunity.Name}</td>
+                        <td>{opportunity.Description}</td>
+                        <td>{opportunity.Amount}</td>
+                        <td>{opportunity.CloseDate}</td>
+                        <td>{opportunity.StageName}</td>
+                        <td>
+                            <button class="slds-button slds-button_neutral" data-id={opportunity.Id}  value={opportunity.Id} onclick={deleteOpportunity}>
+                                <lightning-icon icon-name='utility:delete' alternative-text='delete' size='small' title='delete' class='blue-utility-icon'></lightning-icon>
+                                <span>
+                                Delete
+                                </span>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="slds-button slds-button_brand" data-id={opportunity.Id} onclick={editOpportunity}>
+                                <lightning-icon icon-name='utility:edit' alternative-text='edit' variant='inverse' size='xx-small' title='edit'></lightning-icon>
+                            <span>
+                                Edit
+                            </span>
+                            </button>
+                        </td>
+                       
+                    </tr>
+                
+                </template>
+            </tbody>
+            
+        </table>
+        
+            
+           
+             <div class="center-button">
+             <button class="slds-button slds-button_brand" onclick={deleteAllOpportunity}>
+            <lightning-icon icon-name="utility:delete" alternative-text="Delete All" title="Delete" variant='inverse' size="small"></lightning-icon>
+            
+            Delete All
+            
+            </button>
+        </div>
+            
+        
+    </template>
+    <template  lwc:elseif={oppdata1}>
+        <p>No opportunities found.</p>
+    </template>
+    <template lwc:if={isModalOpen}>
+        <c-accrelatedoppform
+        opportunity-data={selectedOpportunity}
+        onclose={handleModalClose}>
+    </c-accrelatedoppform>
+</template>
+
+
+
+<template lwc:if={isDeleteAllModalOpen}>
+    <c-deleteallcomponent
+        onclose={handleDeleteAllModalClose}
+        onconfirm={handleDeleteAllConfirmed}>
+    </c-deleteallcomponent>
+</template>
+
+    </lightning-card>
+    </template>
+
+
+
+    

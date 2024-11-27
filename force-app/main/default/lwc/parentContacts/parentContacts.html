@@ -1,0 +1,30 @@
+<template>
+    
+    <lightning-card title="Contacts List" icon-name="standard:contact" class="slds-m-around_medium">
+    <template if:true={contacts}>
+       <ul>
+        
+            <template for:each={contacts} for:item="contact">
+            <li key={contact.Id}>
+                <p>
+                    <a href="javascript:void(0)" data-id={contact.Id} onclick={handleSelect}> {contact.Name}</a> 
+                    <!-- <button onClick={clickMe}>select</button> -->
+                    </p>
+                    </li>
+            </template>
+        <template if:true={error}>
+            <p>Error loading contacts:{error} </p>
+        </template>
+            
+       </ul>
+    </template>
+
+<template if:true={selectedContact}>
+    <c-child-contacts contact={selectedContact}></c-child-contacts>
+</template>
+  </lightning-card>
+</template>
+
+
+
+

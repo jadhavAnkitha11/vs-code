@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Parent Component">
+        <input type="text"> 
+        <button onclick={handlebuttonclick}> search</button>
+    </lightning-card>
+    <template if:true={display}>
+        <c-child-contact-component contactdisplay={send}></c-child-contact-component>
+    </template>
+</template>

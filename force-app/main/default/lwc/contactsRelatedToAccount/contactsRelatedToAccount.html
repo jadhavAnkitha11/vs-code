@@ -1,0 +1,38 @@
+
+
+<template>
+    <div class="slds-box slds-theme_default">
+        <template if:true={paginatedContacts}>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <template for:each={columnMetaData} for:item="column">
+                        <th key={column.colApiName}>{column.columnName}</th>
+                    </template>
+                </thead>
+                <tbody>
+                    <template for:each={paginatedContacts} for:item="valueArray">
+                        <tr key={valueArray.Id}>
+                            <template for:each={valueArray.record} for:item="record">
+                                <td key={valueArray.Id}>{record}</td>
+                            </template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:false={paginatedContacts.length}>
+            <p>No contacts exist on this Account.....</p>
+        </template>
+        <template if:true={paginatedContacts}>
+            <div class="slds-m-top_medium">
+                <button disabled={canGoToPreviousPage} onclick={handlePreviousPage} class="slds-button slds-button_neutral">
+                    Previous
+                </button>
+                <button class="slds-button slds-button_neutral" onclick={handleNextPage} disabled={canGoToNextPage}>
+                    Next
+                </button>
+                <p>Page {pageNumber} of {totalPages}</p>
+            </div>
+        </template>
+    </div>
+</template>

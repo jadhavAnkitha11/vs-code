@@ -1,0 +1,60 @@
+<template>
+         <lightning-card title="parent">
+         <c-search-bar onsearching = {handleSearchTerm}></c-search-bar> 
+        <c-object-field-child onparent = {handleParent}></c-object-field-child>
+        <!-- <p>{objectToDisplay}</p> -->
+       
+        <!-- <c-p-search-input onsearch={handleSearchTerm}></c-p-search-input>  -->
+    </lightning-card>
+    <lightning-card title={objectToDisplay} >
+    <template if:true = {isRecordsPresent}>
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+            <thead>
+                <template for:each= {columnData} for:item="col">
+                    <th key = {col.Id}> {col.label}</th>
+                </template>
+            </thead>
+            <tbody>
+                <template for:each= {paginatedrecords} for:item="object">
+                    <tr key = {object.Id}> </tr>
+                    <template for:each= {object.record} for:item="values">
+                        <td key = {object.Id}> {values}</td>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </template>
+    
+    <template if:false= {isRecordsPresent}>
+           <!-- <p>records does not exist</p> -->
+    </template>
+
+    <template if:false={isRecordsPresent}>
+        <p>No Records exist</p>
+    </template>
+    <template if:true={hidepageno}> <!--displayrecords-->
+        <div class="slds-m-top_medium">
+            <button disabled={canGoToPreviousPage} onclick={handlePreviousPage} class="slds-button slds-button_neutral">
+                Previous
+            </button>
+            <button class="slds-button slds-button_neutral" onclick={handleNextPage} disabled={canGoToNextPage}>
+                Next
+            </button>
+            <p>Page {pagenumber} of {totalPages}</p>
+        </div>
+    </template>
+    </lightning-card>
+    <!-- <lightning-card>
+        <c-dynamic-pagination displayrecords = {rowData}></c-dynamic-pagination>
+    </lightning-card> -->
+    
+</template>
+
+
+
+
+
+
+
+
+
